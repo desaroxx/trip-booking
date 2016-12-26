@@ -1,3 +1,5 @@
+require('./css/Main.scss');
+
 import 'angular';
 import 'angular-ui-router';
 
@@ -21,11 +23,11 @@ angular.module(MODULE_NAME, ['ui.router'])
       $stateProvider
         .state('home', {
           url: '/home',
-          template: '<h1>Home</h1>'
+          template: '<h1 id="home">Home</h1>'
         })
         .state('wiki', {
           url: '/wiki',
-          template: '<h1>Wiki</h1>'
+          template: '<h1 id="wiki">Wiki</h1>'
         });
 
       $urlRouterProvider.otherwise('/home');
