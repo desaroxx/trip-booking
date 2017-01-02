@@ -1,5 +1,5 @@
 import * as angular from 'angular';
 
-angular.module('hello').component('navigation', {
+export const navigationComponentOptions: ng.IComponentOptions = {
   template: require('./Navigation.html') as string
-});
+};

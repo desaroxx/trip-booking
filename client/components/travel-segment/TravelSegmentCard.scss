@@ -1,0 +1,36 @@
+.segment {
+  background-color: rgb(255, 255, 255);
+  border-bottom: 1px solid rgb(200, 200, 200);
+
+  .segment-header {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .segment-header-description {
+    display: flex;
+    flex-direction: column;
+    padding: $margin $margin * 2;
+  }
+
+  .segment-header-toggler {
+    margin-left: auto;
+    margin-right: $margin * 2;
+    display: flex;
+    justify-content: center;
+  }
+
+  .segment-content {
+    display: flex;
+    flex-direction: column;
+    padding: $margin $margin * 2;
+  }
+
+  .segment-day {
+    font-weight: 600;
+  }
+
+  .segment-image {
+    width: 100%;
+  }
+}

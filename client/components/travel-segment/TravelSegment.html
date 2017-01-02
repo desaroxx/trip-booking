@@ -1,0 +1,20 @@
+<div class="segment">
+  <div class="segment-header" ng-click="::$ctrl.toggle()">
+    <div class="segment-header-description">
+      <div class="segment-header-title">
+        <span class="segment-day">Tag {{::$ctrl.segment.day}}</span> : {{::$ctrl.segment.from}} - {{::$ctrl.segment.to}}
+      </div>
+      <div class="segment-header-subtitle">
+        Kilometer : {{::$ctrl.segment.km}}
+      </div>
+    </div>
+    <div class="segment-header-toggler">
+      <md-icon ng-if="!$ctrl.isExpanded" md-font-set="material-icons">expand_more</md-icon>
+      <md-icon ng-if="$ctrl.isExpanded" md-font-set="material-icons">expand_less</md-icon>
+    </div>
+  </div>
+  <img class="segment-image" ng-if="$ctrl.isExpanded" ng-src="{{::$ctrl.segment.imageURL}}">
+  <div class="segment-content" ng-if="$ctrl.isExpanded">
+    <div class="segment-description">{{::$ctrl.segment.description}}</div>
+  </div>
+</div>

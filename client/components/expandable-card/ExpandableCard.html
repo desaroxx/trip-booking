@@ -1,0 +1,12 @@
+<md-card>
+  <md-card-header>
+    <md-card-header-text style="display: flex; flex-direction: row;" ng-click="::$ctrl.toggle()">
+      <div class="md-title">{{$ctrl.title}}</div>
+      <div ng-if="!$ctrl.isExpanded" style="margin-left: auto;"><md-icon md-font-set="material-icons">expand_more</md-icon></div>
+      <div ng-if="$ctrl.isExpanded" style="margin-left: auto;"><md-icon md-font-set="material-icons">expand_less</md-icon></div>
+    </md-card-header-text>
+  </md-card-header>
+  <md-card-content ng-if="$ctrl.isExpanded">
+    <ng-transclude></ng-transclude>
+  </md-card-content>
+</md-card>

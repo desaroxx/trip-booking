@@ -1,0 +1,28 @@
+<md-card>
+  <table class="price-table">
+    <thead>
+      <tr>
+        <th>Teilnehmer</th>
+        <th>Bikes</th>
+        <th>Zimmer</th>
+        <th>Preis (CHF)</th>
+      </tr>
+    </thead>
+    <tbody border="0" padding="0">
+      <tr ng-repeat="price in ::$ctrl.prices">
+        <td>
+          <md-icon ng-repeat="person in ::$ctrl.getEmptyArray(price.people)" md-font-set="material-icons">person</md-icon>
+        </td>
+        <td>
+          <md-icon ng-repeat="bike in ::$ctrl.getEmptyArray(price.bikes)" md-font-set="material-icons">motorcycle</md-icon>
+        </td>
+        <td>
+          <md-icon ng-repeat="room in ::$ctrl.getEmptyArray(price.rooms)" md-font-set="material-icons">hotel</md-icon>
+        </td>
+        <td>
+          {{::price.price | currency : ''}}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</md-card>

@@ -1,13 +1,52 @@
-h1 {
-  font-weight: bold;
+$margin: 8px;
+
+@import '../components/travel-segment/TravelSegmentCard';
+
+%side-margin {
+  margin-left: $margin;
+  margin-right: $margin;
 }
 
-#wiki {
-  color: red;
+.page {
+  h2 {
+    @extend %side-margin;
+    margin-top: $margin * 2;
+    margin-bottom: $margin;
+  }
+  h3 {
+    @extend %side-margin;
+    margin-top: $margin;
+    margin-bottom: $margin;
+    color: rgb(100, 100, 100);
+  }
 }
 
-#home {
-  color: blue;
+expandable-card {
+  md-card-content {
+    padding-top: 0;
+
+    :first-child {
+      margin-top: 0;
+    }
+
+    :last-child {
+      margin-bottom: 0;
+    }
+  }
 }
 
+.price-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
 
+  th {
+    border-bottom: 1px solid rgb(200, 200, 200);
+  }
+
+  td, th {
+    text-align: center;
+    height: 35px;
+    line-height: 35px;
+  }
+}
