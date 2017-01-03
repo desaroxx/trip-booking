@@ -1,0 +1,44 @@
+<div class="page">
+
+  <div class="book-now">
+    <md-button class="md-raised md-primary">Jetzt buchen</md-button>
+  </div>
+
+  <div class="page-title-card">
+    <h2 ng-bind="::$ctrl.data.title"></h2>
+    <h3 ng-bind="::$ctrl.data.subtitle"></h3>
+  </div>
+
+  <md-tabs md-dynamic-height>
+
+    <md-tab label="Tour">
+      <md-content class="md-padding">
+        <md-card>
+          <img ng-src="{{::$ctrl.data.mapImageUrl}}" class="md-card-image">
+        </md-card>
+        <expandable-card title="Überblick">
+          <p ng-repeat="description in ::$ctrl.data.descriptions" ng-bind="::description"></p>
+        </expandable-card>
+        <travel-segment-card segments="::$ctrl.data.travelSegments"></travel-segment-card>
+        <price-table-card prices="::$ctrl.data.prices"></price-table-card>
+      </md-content>
+    </md-tab>
+
+    <md-tab label="Bikes">
+      <md-content class="md-padding">
+        <bike-card ng-repeat="bike in ::$ctrl.data.bikes" bike="bike"></bike-card>
+      </md-content>
+    </md-tab>
+
+    <md-tab label="Bilder">
+      <md-content class="md-padding">
+        <md-card ng-repeat="image in ::$ctrl.data.gallery">
+          <img ng-src="{{::image.imageURL}}" class="md-card-image">
+        </md-card>
+      </md-content>
+    </md-tab>
+  </md-tabs>
+
+  <subscribe-newsletter-card></subscribe-newsletter-card>
+
+</div>

@@ -1,0 +1,14 @@
+<md-card class="bike-card">
+  <div class="bike-card-thumbnail">
+    <img ng-src="{{::$ctrl.bike.imageURL}}">
+  </div>
+  <div class="bike-card-description" ng-bind="::$ctrl.bike.title"></div>
+  <div class="bike-card-price">
+    <div class="bike-card-price-number md-primary">
+      {{::$ctrl.bike.price | currencyFilter}}
+    </div>
+    <div class="bike-card-price-currency">
+      CHF
+    </div>
+  </div>
+</md-card>

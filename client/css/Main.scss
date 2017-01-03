@@ -1,52 +1,35 @@
 $margin: 8px;
 
+// layout
+@import './Page';
+
+// components
+@import '../components/bike-card/BikeCard';
+@import '../components/expandable-card/ExpandableCard';
 @import '../components/travel-segment/TravelSegmentCard';
+@import '../components/price-table-card/PriceTableCard';
+@import '../components/navigation/Navigation';
+@import '../components/subscribe-newsletter-card/SubscribeNewsletterCard';
 
-%side-margin {
-  margin-left: $margin;
-  margin-right: $margin;
-}
+// pages
+@import '../pages/TourPage';
 
-.page {
-  h2 {
-    @extend %side-margin;
-    margin-top: $margin * 2;
-    margin-bottom: $margin;
-  }
-  h3 {
-    @extend %side-margin;
-    margin-top: $margin;
-    margin-bottom: $margin;
-    color: rgb(100, 100, 100);
-  }
-}
+.book-now {
+  position: fixed;
+  z-index: 1000;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  height: 50px;
+  background-color:rgba(255, 255, 255, 0.8);
 
-expandable-card {
-  md-card-content {
-    padding-top: 0;
+  padding: $margin;
 
-    :first-child {
-      margin-top: 0;
-    }
+  display: flex;
 
-    :last-child {
-      margin-bottom: 0;
-    }
-  }
-}
-
-.price-table {
-  width: 100%;
-  border-collapse: collapse;
-  table-layout: fixed;
-
-  th {
-    border-bottom: 1px solid rgb(200, 200, 200);
-  }
-
-  td, th {
-    text-align: center;
-    height: 35px;
-    line-height: 35px;
+  button {
+    flex: 1;
+    font-weight: 600;
+    font-size: 1em;
   }
 }

@@ -1,0 +1,42 @@
+$bike-card-height: 80px;
+
+.bike-card {
+  height: $bike-card-height;
+  background-color: rgb(255, 255, 255);
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  .bike-card-thumbnail {
+    height: $bike-card-height;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-left: $margin;
+  }
+
+  .bike-card-description {
+    margin-left: $margin;
+  }
+
+  .bike-card-price {
+    margin-left: auto;
+    padding: 0 $margin * 2;
+    min-width: 40px;
+    display: flex;
+    flex-direction: column;
+
+    .bike-card-price-currency {
+      text-align: right;
+      color: rgb(100, 100, 100);
+      font-size: 10px;
+    }
+
+    .bike-card-price-number {
+      text-align: right;
+      font-size: 18px;
+      color: rgb(40,53,147);
+    }
+  }
+}

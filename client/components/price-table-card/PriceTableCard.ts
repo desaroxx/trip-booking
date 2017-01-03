@@ -2,10 +2,6 @@ import { IPriceTableRowItem } from './IPriceTableRowItem';
 
 class PriceTableCardController {
 
-  constructor() {
-    console.log('[PriceTableCardController] constructor()');
-  }
-
   public prices: IPriceTableRowItem[];
 
   public getEmptyArray(length: number) {
