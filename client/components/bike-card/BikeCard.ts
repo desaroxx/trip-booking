@@ -4,10 +4,6 @@ class BikeCardController {
 
   public bike: IBikeData;
 
-  constructor() {
-    console.log('constructor(): this.bike:', this.bike);
-  }
-
 }
 
 export const bikeCardComponentOptions: ng.IComponentOptions = {

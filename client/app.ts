@@ -4,6 +4,7 @@ import * as angular from 'angular';
 import { IStateProvider, IUrlRouterProvider } from 'angular-ui-router';
 
 import { bikeCardComponentOptions } from './components/bike-card/BikeCard';
+import { configureOfferCardComponentOptions } from './components/configure-offer-card/ConfigureOfferCard';
 import { currencyFilterFactoryFn } from './filters/CurrencyFilter';
 import { expandableCardComponentOptions } from './components/expandable-card/ExpandableCard';
 import { tourPageComponentOptions } from './pages/TourPage';
@@ -20,6 +21,7 @@ angular.module(MODULE_NAME, ['ui.router', 'ngMaterial'])
   .filter('currencyFilter', currencyFilterFactoryFn)
 
   .component('bikeCard', bikeCardComponentOptions)
+  .component('configureOfferCard', configureOfferCardComponentOptions)
   .component('expandableCard', expandableCardComponentOptions)
   .component('tourPage', tourPageComponentOptions)
   .component('navigation', navigationComponentOptions)

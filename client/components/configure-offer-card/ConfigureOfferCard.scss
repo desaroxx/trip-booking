@@ -1,0 +1,60 @@
+$primary-color: rgb(40,53,147);
+
+.configure-offer-card {
+  margin: $margin $margin * 2;
+  @include flexbox;
+  @include flex-direction(column);
+
+  .title {
+    margin: $margin * 2 $margin 0 $margin;
+  }
+
+  .selection-box {
+    padding: $margin $margin 0 $margin;
+    @include flexbox;
+    @include flex-direction(column);
+
+    .label {
+      color: $primary-color;
+      margin-bottom: $margin;
+    }
+
+    .select {
+      margin-bottom: $margin;
+    }
+
+    md-checkbox {
+      margin-left: $margin;
+    }
+  }
+
+  .select-date {
+
+  }
+
+  .select-participants {
+
+  }
+
+  .select-bikes {
+
+  }
+
+  .total-cost {
+    @include flexbox;
+    @include flex-direction(column);
+    text-align: center;
+
+    margin: $margin;
+
+    .price {
+      font-size: 22px;
+      color: $primary-color;
+      font-weight: 600;
+    }
+    .description {
+      font-size: 16px;
+      color: rgb(50, 50, 50);
+    }
+  }
+}

@@ -1,7 +1,7 @@
 <div class="page">
 
   <div class="book-now">
-    <md-button class="md-raised md-primary">Jetzt buchen</md-button>
+    <md-button class="md-raised md-primary" ng-click="::$ctrl.scrollTo('configure-offer')">Jetzt buchen</md-button>
   </div>
 
   <div class="page-title-card">
@@ -19,6 +19,9 @@
         <expandable-card title="Überblick">
           <p ng-repeat="description in ::$ctrl.data.descriptions" ng-bind="::description"></p>
         </expandable-card>
+        <div class="full-width-button">
+          <md-button class="md-raised md-primary" ng-click="::$ctrl.scrollTo('configure-offer')">Termine & Preise</md-button>
+        </div>
         <travel-segment-card segments="::$ctrl.data.travelSegments"></travel-segment-card>
         <price-table-card prices="::$ctrl.data.prices"></price-table-card>
       </md-content>
@@ -26,19 +29,29 @@
 
     <md-tab label="Bikes">
       <md-content class="md-padding">
+        <div class="full-width-button margin-top">
+          <md-button class="md-raised md-primary" ng-click="::$ctrl.scrollTo('configure-offer')">Termine & Preise</md-button>
+        </div>
         <bike-card ng-repeat="bike in ::$ctrl.data.bikes" bike="bike"></bike-card>
       </md-content>
     </md-tab>
 
     <md-tab label="Bilder">
       <md-content class="md-padding">
-        <md-card ng-repeat="image in ::$ctrl.data.gallery">
-          <img ng-src="{{::image.imageURL}}" class="md-card-image">
-        </md-card>
+        <div class="image-card" ng-repeat="image in ::$ctrl.data.gallery">
+          <md-card>
+            <img ng-src="{{::image.imageURL}}" class="md-card-image">
+          </md-card>
+          <div ng-if="$index === 3" class="full-width-button">
+            <md-button class="md-raised md-primary" ng-click="::$ctrl.scrollTo('configure-offer')">Termine & Preise</md-button>
+          </div>
+        </div>
       </md-content>
     </md-tab>
   </md-tabs>
 
   <subscribe-newsletter-card></subscribe-newsletter-card>
+
+  <configure-offer-card id="configure-offer"></configure-offer-card>
 
 </div>

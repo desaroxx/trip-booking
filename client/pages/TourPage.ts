@@ -5,10 +5,16 @@ import { DATA_TOUR_ANDALUCIA } from '../data/DATA_TOUR_ANDALUCIA';
 
 class TourPageController {
 
+  public static $inject = ['$document'];
+
   public data: ITourPageData;
 
-  constructor() {
+  constructor(private $document: ng.IDocumentService) {
     this.data = DATA_TOUR_ANDALUCIA;
+  }
+
+  public scrollTo(id: string) {
+    document.getElementById(id).scrollIntoView();
   }
 
 }

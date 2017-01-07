@@ -1,15 +1,19 @@
 $margin: 8px;
 
+// mixins
+@import './mixins/Flexbox';
+
 // layout
 @import './Page';
 
 // components
-@import '../components/bike-card/BikeCard';
+@import '../components/configure-offer-card/ConfigureOfferCard';
 @import '../components/expandable-card/ExpandableCard';
-@import '../components/travel-segment/TravelSegmentCard';
+@import '../components/bike-card/BikeCard';
 @import '../components/price-table-card/PriceTableCard';
 @import '../components/navigation/Navigation';
 @import '../components/subscribe-newsletter-card/SubscribeNewsletterCard';
+@import '../components/travel-segment/TravelSegmentCard';
 
 // pages
 @import '../pages/TourPage';
@@ -31,5 +35,35 @@ $margin: 8px;
     flex: 1;
     font-weight: 600;
     font-size: 1em;
+  }
+}
+
+.right {
+  margin-left: auto;
+  margin-right: 0px;
+}
+
+.margin-top {
+  margin-top: $margin;
+}
+
+.margin-right {
+  margin-right: $margin;
+}
+
+.margin-bottom {
+  margin-bottom: $margin;
+}
+
+.margin-left {
+  margin-left: $margin;
+}
+
+.full-width-button {
+  margin-left: $margin;
+  margin-right: $margin;
+  .md-button {
+    margin: 0;
+    width: 100%;
   }
 }
