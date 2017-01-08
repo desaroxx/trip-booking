@@ -1,0 +1,13 @@
+<md-content class="md-padding">
+  <md-card>
+    <img ng-src="{{::$ctrl.data.mapImageUrl}}" class="md-card-image">
+  </md-card>
+  <expandable-card title="Überblick">
+    <p ng-repeat="description in ::$ctrl.data.descriptions" ng-bind="::description"></p>
+  </expandable-card>
+  <div class="full-width-button">
+    <div ng-transclude></div>
+  </div>
+  <travel-segment-card segments="::$ctrl.data.travelSegments"></travel-segment-card>
+  <price-table-card prices="::$ctrl.data.prices"></price-table-card>
+</md-content>

@@ -1,82 +1,90 @@
 <md-card class="configure-offer-card">
   <h3 class="md-title title">Reisedaten</h3>
-  <div class="select-date selection-box">
-    <label class="label">Termin</label>
-    <select class="select" ng-model="$ctrl.selectedTourDate">
-      <option ng-repeat="tourDate in ::$ctrl.tourDates" ng-value="tourDate">
-        {{tourDate.value}}
-      </option>
-    </select>
-  </div>
+  <form name="$ctrl.configureOfferForm">
+    <div class="select-date selection-box">
+      <label class="label">Termin</label>
+      <select name="tourDate" class="select" ng-model="$ctrl.selectedTourDate">
+        <option ng-repeat="tourDate in ::$ctrl.tourDates" ng-value="tourDate">
+          {{tourDate.value}}
+        </option>
+      </select>
+    </div>
 
-  <div class="select-participants selection-box">
-    <label class="label">Teilnehmer</label>
-    <md-checkbox
-      ng-model="$ctrl.persons"
-      aria-label="1 Person"
-      ng-true-value="1"
-      ng-false-value="2">
-      1 Person <span ng-if="$ctrl.persons === 2">(- CHF {{$ctrl.pricePerPerson | currencyFilter}})</span>
-    </md-checkbox>
-    <md-checkbox
-      ng-model="$ctrl.persons"
-      aria-label="2 Personen"
-      ng-true-value="2"
-      ng-false-value="1">
-      2 Personen <span ng-if="$ctrl.persons === 1">(+ CHF {{$ctrl.pricePerPerson | currencyFilter}})</span>
-    </md-checkbox>
-  </div>
+    <div class="select-participants selection-box">
+      <label class="label">Teilnehmer</label>
+      <md-checkbox
+        name="1persons"
+        ng-model="$ctrl.persons"
+        aria-label="1 Person"
+        ng-true-value="1"
+        ng-false-value="2">
+        1 Person <span ng-if="$ctrl.persons === 2">(- CHF {{$ctrl.pricePerPerson | currencyFilter}})</span>
+      </md-checkbox>
+      <md-checkbox
+        name="2persons"
+        ng-model="$ctrl.persons"
+        aria-label="2 Personen"
+        ng-true-value="2"
+        ng-false-value="1">
+        2 Personen <span ng-if="$ctrl.persons === 1">(+ CHF {{$ctrl.pricePerPerson | currencyFilter}})</span>
+      </md-checkbox>
+    </div>
 
-  <div class="select-bikes selection-box">
-    <label class="label">Motorräder</label>
-    <md-checkbox
-      ng-model="$ctrl.bikes"
-      aria-label="1 Motorrad"
-      ng-true-value="1"
-      ng-false-value="2">
-      1 Motorrad
-    </md-checkbox>
-    <md-checkbox
-      ng-model="$ctrl.bikes"
-      aria-label="2 Motorräder"
-      ng-true-value="2"
-      ng-false-value="1">
-      2 Motorräder
-    </md-checkbox>
-  </div>
-  <div class="selection-box">
-    <label class="label">1. Motorrad</label>
-    <select class="select" ng-show="$ctrl.bikes > 0" ng-model="$ctrl.selectedBike1">
-      <option ng-repeat="bike in ::$ctrl.availableBikes" ng-value="bike">
-        {{ ::bike.title }} - CHF {{ ::bike.price | currencyFilter }}
-      </option>
-    </select>
-  </div>
-  <div class="selection-box" ng-show="$ctrl.bikes > 1">
-    <label class="label">2. Motorrad</label>
-    <select class="select" ng-model="$ctrl.selectedBike2">
-      <option ng-repeat="bike in ::$ctrl.availableBikes" ng-value="bike">
-        {{ ::bike.title }} - CHF {{ ::bike.price | currencyFilter }}
-      </option>
-    </select>
-  </div>
-  <div class="selection-box">
-    <label class="label">Hotelzimmer</label>
-    <md-checkbox
-      ng-model="$ctrl.rooms"
-      aria-label="1 Zimmer"
-      ng-true-value="1"
-      ng-false-value="2">
-      1 Zimmer <span ng-if="$ctrl.rooms === 2">(- CHF {{$ctrl.pricePerRoom | currencyFilter}})</span>
-    </md-checkbox>
-    <md-checkbox
-      ng-model="$ctrl.rooms"
-      aria-label="2 Zimmer"
-      ng-true-value="2"
-      ng-false-value="1">
-      2 Zimmer <span ng-if="$ctrl.rooms === 1">(+ CHF {{$ctrl.pricePerRoom | currencyFilter}})</span>
-    </md-checkbox>
-  </div>
+    <div class="select-bikes selection-box">
+      <label class="label">Motorräder</label>
+      <md-checkbox
+        name="1bikes"
+        ng-model="$ctrl.bikes"
+        aria-label="1 Motorrad"
+        ng-true-value="1"
+        ng-false-value="2">
+        1 Motorrad
+      </md-checkbox>
+      <md-checkbox
+        name="2bikes"
+        ng-model="$ctrl.bikes"
+        aria-label="2 Motorräder"
+        ng-true-value="2"
+        ng-false-value="1">
+        2 Motorräder
+      </md-checkbox>
+    </div>
+    <div class="selection-box">
+      <label class="label">1. Motorrad</label>
+      <select name="selectedBike1" class="select" ng-show="$ctrl.bikes > 0" ng-model="$ctrl.selectedBike1">
+        <option ng-repeat="bike in ::$ctrl.availableBikes" ng-value="bike">
+          {{ ::bike.title }} - CHF {{ ::bike.price | currencyFilter }}
+        </option>
+      </select>
+    </div>
+    <div class="selection-box" ng-show="$ctrl.bikes > 1">
+      <label class="label">2. Motorrad</label>
+      <select name="selectedBike2" class="select" ng-model="$ctrl.selectedBike2">
+        <option ng-repeat="bike in ::$ctrl.availableBikes" ng-value="bike">
+          {{ ::bike.title }} - CHF {{ ::bike.price | currencyFilter }}
+        </option>
+      </select>
+    </div>
+    <div class="selection-box">
+      <label class="label">Hotelzimmer</label>
+      <md-checkbox
+        name="1rooms"
+        ng-model="$ctrl.rooms"
+        aria-label="1 Zimmer"
+        ng-true-value="1"
+        ng-false-value="2">
+        1 Zimmer <span ng-if="$ctrl.rooms === 2">(- CHF {{$ctrl.pricePerRoom | currencyFilter}})</span>
+      </md-checkbox>
+      <md-checkbox
+        name="2rooms"
+        ng-model="$ctrl.rooms"
+        aria-label="2 Zimmer"
+        ng-true-value="2"
+        ng-false-value="1">
+        2 Zimmer <span ng-if="$ctrl.rooms === 1">(+ CHF {{$ctrl.pricePerRoom | currencyFilter}})</span>
+      </md-checkbox>
+    </div>
+  </form>
 
   <div class="total-cost">
     <div class="price">CHF {{$ctrl.getTotal() | currencyFilter}}</div>

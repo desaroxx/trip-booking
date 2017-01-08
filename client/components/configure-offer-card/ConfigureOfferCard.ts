@@ -1,90 +1,34 @@
-interface ITourDate {
-  value: string;
-  from: string;
-  to: string;
-  price: number;
-}
+import { ConversionTrackingService } from '../../services/ConversionTrackingService';
+import { ITourDate } from './ITourDate';
 
 class ConfigureOfferCardController {
-  public tourDates: ITourDate[];
-  public selectedTourDate: ITourDate;
 
+  // internal
   public persons: number;
   public bikes: number;
   public rooms: number;
-  public availableBikes: { title: string; imageURL: string; price: number; }[];
+  public configureOfferForm: ng.IFormController;
+
+  // bound
   public selectedBike1: { title: string; imageURL: string; price: number; };
   public selectedBike2: { title: string; imageURL: string; price: number; };
-
+  public selectedTourDate: ITourDate;
+  public availableBikes: { title: string; imageURL: string; price: number; }[];
+  public pageName: string;
   public pricePerRoom: number;
   public pricePerPerson: number;
+  public tourDates: ITourDate[];
 
-  constructor() {
-    // internal
+  constructor(private $scope: ng.IScope) {
     this.persons = 1;
     this.bikes = 1;
     this.rooms = 1;
 
-    // passed
-    this.tourDates = [
-      {
-        value: `23.05.2017 - 31.05.2017 (ab CHF 1'999)`,
-        from: `23.05.2017`,
-        to: `31.05.2017`,
-        price: 1999
-      }, {
-        value: `01.06.2017 - 08.06.2017 (ab CHF 2'199)`,
-        from: `01.06.2017`,
-        to: `08.06.2017`,
-        price: 2199
-      }, {
-        value: `09.06.2017 - 16.06.2017 (ab CHF 2'199)`,
-        from: `09.06.2017`,
-        to: `16.06.2017`,
-        price: 2199
-      }, {
-        value: `17.07.2017 - 24.06.2017 (ab CHF 2'399)`,
-        from: `17.07.2017`,
-        to: `24.06.2017`,
-        price: 2399
-      }
-    ];
+    this.attachWatchers();
+  }
 
-    this.selectedTourDate = this.tourDates[0];
-
-    this.availableBikes = [
-      {
-        title: `Eigenes Motorrad`,
-        imageURL: `http://www.hispania-tours.de/fileadmin/website/imgs/iconBikes/EigenesBikeIcon.gif`,
-        price: 0
-      }, {
-        title: `BMW F700GS`,
-        imageURL: `http://www.hispania-tours.de/fileadmin/website/imgs/iconBikes/F650-800GSIcon.gif`,
-        price: 570
-      }, {
-        title: `BMW F800GS / ADV`,
-        imageURL: `http://www.hispania-tours.de/fileadmin/website/imgs/iconBikes/F650-800GSIcon.gif`,
-        price: 630
-      }, {
-        title: `BMW R1200GS / ADV`,
-        imageURL: `http://www.hispania-tours.de/fileadmin/website/imgs/iconBikes/R1200GSIcon.gif`,
-        price: 810
-      }, {
-        title: `BMW R1200R`,
-        imageURL: `http://www.hispania-tours.de/fileadmin/website/imgs/iconBikes/R1200RIcon.gif`,
-        price: 720
-      }, {
-        title: `BMW R1200RT`,
-        imageURL: `http://www.hispania-tours.de/fileadmin/website/imgs/iconBikes/R1200RTIcon.gif`,
-        price: 870
-      }
-    ];
-
-    this.selectedBike1 = this.availableBikes[0];
-    this.selectedBike2 = this.availableBikes[0];
-
-    this.pricePerRoom = 400;
-    this.pricePerPerson = 1200;
+  private attachWatchers() {
+    this.$scope.$watch(() => this.configureOfferForm.$dirty, newValue => newValue ? this.onFormFirstTouched() : null);
   }
 
   public getTotal() {
@@ -93,9 +37,24 @@ class ConfigureOfferCardController {
     const roomCost = this.rooms === 2 ? this.pricePerRoom : 0;
     return personCost + bikeCost + roomCost;
   }
+
+  public onFormFirstTouched() {
+    ConversionTrackingService.touchedOfferConfigurator(this.pageName);
+  }
+
 }
 
 export const configureOfferCardComponentOptions: ng.IComponentOptions = {
   controller: ConfigureOfferCardController,
-  template: require('./ConfigureOfferCard.html')
+  template: require('./ConfigureOfferCard.html'),
+  bindings: {
+    pageName: '@',
+    selectedBike1: '<',
+    selectedBike2: '<',
+    availableBikes: '<',
+    pricePerRoom: '<',
+    pricePerPerson: '<',
+    selectedTourDate: '<',
+    tourDates: '<'
+  }
 };

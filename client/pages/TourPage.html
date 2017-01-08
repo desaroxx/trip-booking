@@ -1,7 +1,7 @@
 <div class="page">
 
   <div class="book-now">
-    <md-button class="md-raised md-primary" ng-click="::$ctrl.scrollTo('configure-offer')">Jetzt buchen</md-button>
+    <md-button class="md-raised md-primary" ng-click="::$ctrl.onOrderNowButtonClick()">Jetzt buchen</md-button>
   </div>
 
   <div class="page-title-card">
@@ -9,53 +9,39 @@
     <h3 ng-bind="::$ctrl.data.subtitle"></h3>
   </div>
 
-  <md-tabs md-dynamic-height>
-
-    <md-tab label="Tour">
-      <md-content class="md-padding">
-        <md-card>
-          <img ng-src="{{::$ctrl.data.mapImageUrl}}" class="md-card-image">
-        </md-card>
-        <expandable-card title="Überblick">
-          <p ng-repeat="description in ::$ctrl.data.descriptions" ng-bind="::description"></p>
-        </expandable-card>
-        <div class="full-width-button">
-          <md-button
-            class="md-raised md-primary"
-            ng-click="::$ctrl.onPriceAndDatesButtonClick('tour', 'tour')">
-            Termine & Preise
-          </md-button>
-        </div>
-        <travel-segment-card segments="::$ctrl.data.travelSegments"></travel-segment-card>
-        <price-table-card prices="::$ctrl.data.prices"></price-table-card>
-      </md-content>
+  <md-tabs md-dynamic-height md-no-pagination md-selected="$ctrl.selectedTabIndex">
+    <md-tab label="{{::$ctrl.tabNames[0]}}" class="tour-tab">
+      <tour-tab page-name="{{::$ctrl.pageName}}" data="::$ctrl.data">
+        <md-button class="md-raised md-primary" ng-click="::$ctrl.onPriceAndDatesButtonClick($ctrl.tabNames[0])">Termine & Preise</md-button>
+      </tour-tab>
     </md-tab>
 
-    <md-tab label="Bikes">
-      <md-content class="md-padding">
-        <div class="full-width-button margin-top">
-          <md-button class="md-raised md-primary" ng-click="::$ctrl.scrollTo('configure-offer')">Termine & Preise</md-button>
-        </div>
-        <bike-card ng-repeat="bike in ::$ctrl.data.bikes" bike="bike"></bike-card>
-      </md-content>
+    <md-tab label="{{::$ctrl.tabNames[1]}}" class="bikes-tab">
+      <bikes-tab page-name="{{::$ctrl.pageName}}" bikes="::$ctrl.data.bikes">
+        <md-button class="md-raised md-primary" ng-click="::$ctrl.onPriceAndDatesButtonClick($ctrl.tabNames[1])">Termine & Preise</md-button>
+      </bikes-tab>
     </md-tab>
 
-    <md-tab label="Bilder">
-      <md-content class="md-padding">
-        <div class="image-card" ng-repeat="image in ::$ctrl.data.gallery">
-          <md-card>
-            <img ng-src="{{::image.imageURL}}" class="md-card-image">
-          </md-card>
-          <div ng-if="$index === 3" class="full-width-button">
-            <md-button class="md-raised md-primary" ng-click="::$ctrl.scrollTo('configure-offer')">Termine & Preise</md-button>
-          </div>
-        </div>
-      </md-content>
+
+    <md-tab label="{{::$ctrl.tabNames[2]}}" class="gallery-tab">
+      <gallery-tab page-name="{{::$ctrl.pageName}}" is-selected="$ctrl.selectedTabIndex === 2" images="::$ctrl.data.gallery">
+        <md-button class="md-raised md-primary" ng-click="::$ctrl.onPriceAndDatesButtonClick($ctrl.tabNames[2])">Termine & Preise</md-button>
+      </gallery-tab>
     </md-tab>
+
   </md-tabs>
 
-  <subscribe-newsletter-card></subscribe-newsletter-card>
+  <subscribe-newsletter-card page-name="{{::$ctrl.pageName}}"></subscribe-newsletter-card>
 
-  <configure-offer-card id="configure-offer"></configure-offer-card>
+  <configure-offer-card
+    page-name="{{::$ctrl.pageName}}"
+    available-bikes="::$ctrl.data.bikes"
+    selected-bike-1="$ctrl.data.bikes[0]"
+    selected-bike-2="$ctrl.data.bikes[1]"
+    price-per-room="::$ctrl.data.pricePerRoom"
+    price-per-person="::$ctrl.data.pricePerPerson"
+    tour-dates="::$ctrl.data.tourDates"
+    selected-tour-date="$ctrl.data.tourDates[0]">
+  </configure-offer-card>
 
 </div>

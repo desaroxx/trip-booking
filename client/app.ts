@@ -1,18 +1,21 @@
 require('./css/Main.scss');
 
 import * as angular from 'angular';
-import { IStateProvider, IUrlRouterProvider } from 'angular-ui-router';
 
 import { bikeCardComponentOptions } from './components/bike-card/BikeCard';
+import { bikesTabComponentOptions } from './components/bikes-tab/BikesTab';
 import { configureOfferCardComponentOptions } from './components/configure-offer-card/ConfigureOfferCard';
 import { currencyFilterFactoryFn } from './filters/CurrencyFilter';
 import { expandableCardComponentOptions } from './components/expandable-card/ExpandableCard';
+import { galleryTabComponentOptions } from './components/gallery-tab/GalleryTab';
 import { tourPageComponentOptions } from './pages/TourPage';
 import { navigationComponentOptions } from './components/navigation/Navigation';
 import { priceTableCardComponentOptions } from './components/price-table-card/PriceTableCard';
+import { ScrollingService } from './services/ScrollingService';
 import { subscribeNewsletterCardComponentOptions } from './components/subscribe-newsletter-card/SubscribeNewsletterCard';
 import { travelSegmentCardComponentOptions } from './components/travel-segment/TravelSegmentCard';
 import { travelSegmentComponentOptions } from './components/travel-segment/TravelSegment';
+import { tourTabComponentOptions } from './components/tour-tab/TourTab';
 
 const MODULE_NAME = 'hello';
 
@@ -21,22 +24,27 @@ angular.module(MODULE_NAME, ['ui.router', 'ngMaterial'])
   .filter('currencyFilter', currencyFilterFactoryFn)
 
   .component('bikeCard', bikeCardComponentOptions)
+  .component('bikesTab', bikesTabComponentOptions)
   .component('configureOfferCard', configureOfferCardComponentOptions)
   .component('expandableCard', expandableCardComponentOptions)
+  .component('galleryTab', galleryTabComponentOptions)
   .component('tourPage', tourPageComponentOptions)
   .component('navigation', navigationComponentOptions)
   .component('priceTableCard', priceTableCardComponentOptions)
   .component('subscribeNewsletterCard', subscribeNewsletterCardComponentOptions)
+  .component('tourTab', tourTabComponentOptions)
   .component('travelSegment', travelSegmentComponentOptions)
   .component('travelSegmentCard', travelSegmentCardComponentOptions)
+
+  .service('scrollingService', ScrollingService)
 
   .config([
     '$stateProvider',
     '$urlRouterProvider',
     '$locationProvider',
     (
-      $stateProvider: IStateProvider,
-      $urlRouterProvider: IUrlRouterProvider,
+      $stateProvider: ng.ui.IStateProvider,
+      $urlRouterProvider: ng.ui.IUrlRouterProvider,
       $locationProvider: ng.ILocationProvider
     ) => {
 

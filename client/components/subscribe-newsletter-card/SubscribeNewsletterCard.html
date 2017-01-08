@@ -2,11 +2,10 @@
   <div class="subscribe-newsletter-card-slogan">
     Alle Deals erhalten & CHF 50 Gutschein sichern!
   </div>
-  <form name="subscriptionForm">
+  <form name="subscriptionForm" ng-submit="::$ctrl.onSubscribeButtonClick(subscriptionForm.$valid)" novalidate>
     <div class="subscribe-newsletter-card-form">
         <input type="email" placeholder="Ihre Email-Adresse">
-        <button>Senden</button>
+        <button type="submit">Senden</button>
     </div>
   </form>
-
 </md-card>

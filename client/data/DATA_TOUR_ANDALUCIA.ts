@@ -138,5 +138,30 @@ export const DATA_TOUR_ANDALUCIA: ITourPageData = {
     { imageURL: `/images/andalusien/andalusien-21.jpg`},
     { imageURL: `/images/andalusien/andalusien-22.jpg`},
     { imageURL: `/images/andalusien/andalusien-23.jpg`}
-  ]
+  ],
+  tourDates: [
+    {
+      value: `23.05.2017 - 31.05.2017 (ab CHF 1'999)`,
+      from: `23.05.2017`,
+      to: `31.05.2017`,
+      price: 1999
+    }, {
+      value: `01.06.2017 - 08.06.2017 (ab CHF 2'199)`,
+      from: `01.06.2017`,
+      to: `08.06.2017`,
+      price: 2199
+    }, {
+      value: `09.06.2017 - 16.06.2017 (ab CHF 2'199)`,
+      from: `09.06.2017`,
+      to: `16.06.2017`,
+      price: 2199
+    }, {
+      value: `17.07.2017 - 24.06.2017 (ab CHF 2'399)`,
+      from: `17.07.2017`,
+      to: `24.06.2017`,
+      price: 2399
+    }
+  ],
+  pricePerRoom: 400,
+  pricePerPerson: 1200
 };

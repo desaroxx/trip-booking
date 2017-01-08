@@ -1,0 +1,10 @@
+<md-content class="md-padding">
+  <div class="image-card" ng-repeat="image in ::$ctrl.images">
+    <md-card>
+      <img ng-src="{{::image.imageURL}}" class="md-card-image">
+    </md-card>
+    <div ng-if="$index === 3" class="full-width-button">
+      <ng-transclude></ng-transclude>
+    </div>
+  </div>
+</md-content>

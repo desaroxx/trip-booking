@@ -13,9 +13,7 @@ class Server {
       res.sendFile(path.resolve(__dirname + '/../static/index.html'));
     });
 
-    app.listen(3000, function () {
-      console.log('Example app listening on port 3000!')
-    });
+    app.listen(3000, () => console.log('Server listening on port 3000!'));
   }
 
 }

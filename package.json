@@ -15,7 +15,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@types/angular": "^1.5.22",
+    "@types/angular": "^1.5.23",
     "@types/angular-material": "^1.1.43",
     "@types/angular-ui-router": "^1.1.36",
     "@types/body-parser": "0.0.33",

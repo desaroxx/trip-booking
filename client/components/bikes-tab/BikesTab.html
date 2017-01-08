@@ -1,0 +1,6 @@
+<md-content class="md-padding">
+  <div class="full-width-button margin-top">
+    <ng-transclude></ng-transclude>
+  </div>
+  <bike-card ng-repeat="bike in ::$ctrl.bikes" bike="::bike"></bike-card>
+</md-content>

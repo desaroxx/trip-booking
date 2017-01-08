@@ -6,6 +6,9 @@ module.exports = {
   resolve: {
     extensions: ['', '.webpack.js', '.web.js', '.ts', '.js']
   },
+  externals: {
+    angular: "angular"
+  },
   module: {
     loaders: [
       {

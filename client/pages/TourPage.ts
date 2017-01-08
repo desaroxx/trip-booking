@@ -2,25 +2,41 @@ import { IPriceTableRowItem } from '../components/price-table-card/IPriceTableR
 import { ITravelSegment } from '../components/travel-segment/ITravelSegment';
 import { ITourPageData } from './ITourPageData';
 import { DATA_TOUR_ANDALUCIA } from '../data/DATA_TOUR_ANDALUCIA';
-import { UserTrackingService } from '../services/UserTrackingService';
+import { ScrollingService } from '../services/ScrollingService';
+import { ConversionTrackingService } from '../services/ConversionTrackingService';
+import { UserTrackingService } from '../services/UserTrackingService';
 
 class TourPageController {
 
-  public static $inject = ['$document'];
+  public static $inject = ['scrollingService'];
 
+  // own
+  public pageName: string;
+  public selectedTabIndex: number;
+  private tabNames: string[];
+
+  // bindings
   public data: ITourPageData;
 
-  constructor(private $document: ng.IDocumentService) {
+  constructor(private scrollingService: ScrollingService) {
+    // own
+    this.pageName = 'Tour';
+    this.tabNames = ['Tour', 'Bikes', 'Bilder'];
+    this.selectedTabIndex = 0;
+
+    // bindings
     this.data = DATA_TOUR_ANDALUCIA;
   }
 
-  public onPriceAndDatesButtonClick(pageName: string, tabName: string) {
-    UserTrackingService.clickViewPricesAndDatesButton(pageName, tabName);
-    this.scrollTo('configure-offer');
+  public onPriceAndDatesButtonClick(tabName: string) {
+    UserTrackingService.clickViewPricesAndDatesButton(this.pageName, tabName);
+    const elementId = 'configure-offer';
+    this.scrollingService.scrollTo(elementId);
   }
 
-  private scrollTo(id: string) {
-    document.getElementById(id).scrollIntoView();
+  public onOrderNowButtonClick() {
+    const selectedTabName = this.tabNames[this.selectedTabIndex];
+    ConversionTrackingService.clickOrderNowButton(this.pageName, selectedTabName);
   }
 
 }
