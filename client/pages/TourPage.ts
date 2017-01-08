@@ -2,6 +2,7 @@ import { IPriceTableRowItem } from '../components/price-table-card/IPriceTableR
 import { ITravelSegment } from '../components/travel-segment/ITravelSegment';
 import { ITourPageData } from './ITourPageData';
 import { DATA_TOUR_ANDALUCIA } from '../data/DATA_TOUR_ANDALUCIA';
+import { UserTrackingService } from '../services/UserTrackingService';
 
 class TourPageController {
 
@@ -13,7 +14,12 @@ class TourPageController {
     this.data = DATA_TOUR_ANDALUCIA;
   }
 
-  public scrollTo(id: string) {
+  public onPriceAndDatesButtonClick(pageName: string, tabName: string) {
+    UserTrackingService.clickViewPricesAndDatesButton(pageName, tabName);
+    this.scrollTo('configure-offer');
+  }
+
+  private scrollTo(id: string) {
     document.getElementById(id).scrollIntoView();
   }
 

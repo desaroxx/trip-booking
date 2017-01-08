@@ -20,7 +20,11 @@
           <p ng-repeat="description in ::$ctrl.data.descriptions" ng-bind="::description"></p>
         </expandable-card>
         <div class="full-width-button">
-          <md-button class="md-raised md-primary" ng-click="::$ctrl.scrollTo('configure-offer')">Termine & Preise</md-button>
+          <md-button
+            class="md-raised md-primary"
+            ng-click="::$ctrl.onPriceAndDatesButtonClick('tour', 'tour')">
+            Termine & Preise
+          </md-button>
         </div>
         <travel-segment-card segments="::$ctrl.data.travelSegments"></travel-segment-card>
         <price-table-card prices="::$ctrl.data.prices"></price-table-card>
