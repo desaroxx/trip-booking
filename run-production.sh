@@ -8,5 +8,7 @@ npm cache clean
 
 npm install
 npm run build
+cp -a ./static/. ./client-dist
 
 npm start
+
