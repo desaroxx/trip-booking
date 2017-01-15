@@ -70,20 +70,22 @@ export const DATA_TOUR_ANDALUCIA: ITourPageData = {
   ],
   prices: [
     {
-      people: 2,
-      bikes: 1,
-      rooms: 1,
-      price: 1999
-    }, {
-      people: 2,
-      bikes: 2,
-      rooms: 1,
-      price: 2799
-    }, {
       people: 1,
       bikes: 1,
       rooms: 1,
-      price: 2399
+      price: (1199 * 1) + (570 * 1) + (300 * 1)
+    },
+    {
+      people: 2,
+      bikes: 1,
+      rooms: 1,
+      price: (1199 * 2) + (570 * 1) + (300 * 0)
+    },
+    {
+      people: 2,
+      bikes: 2,
+      rooms: 1,
+      price: (1199 * 2) + (570 * 2) + (300 * 0)
     }
   ],
   mapImageUrl: 'http://www.hispania-tours.de/uploads/pics/andalusienKlassik_Karte.jpg',
@@ -141,27 +143,27 @@ export const DATA_TOUR_ANDALUCIA: ITourPageData = {
   ],
   tourDates: [
     {
-      value: `23.05.2017 - 31.05.2017 (ab CHF 1'999)`,
+      value: `23.05.2017 - 31.05.2017 (ab CHF 1'199)`,
       from: `23.05.2017`,
       to: `31.05.2017`,
-      price: 1999
+      price: 1199
     }, {
-      value: `01.06.2017 - 08.06.2017 (ab CHF 2'199)`,
+      value: `01.06.2017 - 08.06.2017 (ab CHF 1'299)`,
       from: `01.06.2017`,
       to: `08.06.2017`,
-      price: 2199
+      price: 1299
     }, {
-      value: `09.06.2017 - 16.06.2017 (ab CHF 2'199)`,
+      value: `09.06.2017 - 16.06.2017 (ab CHF 1'299)`,
       from: `09.06.2017`,
       to: `16.06.2017`,
-      price: 2199
+      price: 1299
     }, {
-      value: `17.07.2017 - 24.06.2017 (ab CHF 2'399)`,
+      value: `17.07.2017 - 24.06.2017 (ab CHF 1'399)`,
       from: `17.07.2017`,
       to: `24.06.2017`,
-      price: 2399
+      price: 1399
     }
   ],
-  pricePerRoom: 400,
-  pricePerPerson: 1200
+  pricePerRoom: 300,
+  pricePerPerson: 1199
 };
