@@ -1,4 +1,4 @@
-#!/bin/bash
+a#!/bin/bash
 
 git checkout master
 git pull
@@ -10,5 +10,5 @@ npm install
 npm run build
 cp -a ./static/. ./client-dist
 
-npm start
+# npm start
 
