@@ -9,7 +9,7 @@ class Server {
     app.use(express.static(__dirname + '/../static'));
     app.use(express.static(__dirname + '/../client-dist'));
 
-    app.get('/*', function(req, res){
+    app.get('/*', (req, res) => {
       res.sendFile(path.resolve(__dirname + '/../static/index.html'));
     });
 

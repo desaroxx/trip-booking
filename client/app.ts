@@ -50,15 +50,11 @@ angular.module(MODULE_NAME, ['ui.router', 'ngMaterial'])
 
       $stateProvider
         .state('tour', {
-          url: '/tour',
+          url: '/tour/:tourName',
           template: '<tour-page></tour-page>'
-        })
-        .state('wiki', {
-          url: '/wiki',
-          template: '<h1 id="wiki">Wiki</h1>'
         });
 
-      $urlRouterProvider.otherwise('/tour');
+      $urlRouterProvider.otherwise('/tour/andalusien');
 
       $locationProvider.html5Mode({
         enabled: true,
