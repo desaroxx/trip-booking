@@ -61,4 +61,27 @@ angular.module(MODULE_NAME, ['ui.router', 'ngMaterial'])
         requireBase: false
       });
     }
+  ])
+
+  .run([
+    '$window',
+    '$rootScope',
+    '$location',
+    (
+      $window: ng.IWindowService ,
+      $rootScope: ng.IRootScopeService,
+      $location: ng.ILocationService
+    ) => {
+      // facebook pixel
+      fbq('init', '140968403058884');
+
+      // google analytics
+      ga('create', 'UA-90383943-1', 'auto');
+
+      $rootScope.$on('$stateChangeSuccess', event => {
+        console.log('$on $stateChangeSuccess');
+        ga('send', 'pageview', $location.path());
+        fbq('track', 'PageView');
+      });
+    }
   ]);
