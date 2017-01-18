@@ -5,23 +5,35 @@ import * as angular from 'angular';
 import { bikeCardComponentOptions } from './components/bike-card/BikeCard';
 import { bikesTabComponentOptions } from './components/bikes-tab/BikesTab';
 import { configureOfferCardComponentOptions } from './components/configure-offer-card/ConfigureOfferCard';
+import { ConversionTrackingService } from './services/ConversionTrackingService';
 import { currencyFilterFactoryFn } from './filters/CurrencyFilter';
+import { ENVIRONMENTS } from './enums/ENVIRONMENTS';
 import { expandableCardComponentOptions } from './components/expandable-card/ExpandableCard';
 import { galleryTabComponentOptions } from './components/gallery-tab/GalleryTab';
 import { tourPageComponentOptions } from './pages/TourPage';
 import { navigationComponentOptions } from './components/navigation/Navigation';
 import { priceTableCardComponentOptions } from './components/price-table-card/PriceTableCard';
+import { PushNotificationService } from './services/PushNotificationService';
 import { ScrollingService } from './services/ScrollingService';
 import { subscribeNewsletterCardComponentOptions } from './components/subscribe-newsletter-card/SubscribeNewsletterCard';
 import { travelSegmentCardComponentOptions } from './components/travel-segment/TravelSegmentCard';
 import { travelSegmentComponentOptions } from './components/travel-segment/TravelSegment';
 import { tourTabComponentOptions } from './components/tour-tab/TourTab';
+import { UserTrackingService } from './services/UserTrackingService';
 
-const MODULE_NAME = 'hello';
+const MODULE_NAME = 'app';
+
+function getEnvironment() {
+  const { hostname } = window.location;
+  switch (hostname) {
+    case 'tripahoi.ch': return ENVIRONMENTS.PRODUCTION;
+    case 'localhost':
+    default:
+      return ENVIRONMENTS.LOCAL;
+  }
+}
 
 angular.module(MODULE_NAME, ['ui.router', 'ngMaterial'])
-
-  .filter('currencyFilter', currencyFilterFactoryFn)
 
   .component('bikeCard', bikeCardComponentOptions)
   .component('bikesTab', bikesTabComponentOptions)
@@ -36,7 +48,14 @@ angular.module(MODULE_NAME, ['ui.router', 'ngMaterial'])
   .component('travelSegment', travelSegmentComponentOptions)
   .component('travelSegmentCard', travelSegmentCardComponentOptions)
 
+  .constant('environment', getEnvironment())
+
+  .filter('currencyFilter', currencyFilterFactoryFn)
+
+  .service('conversionTrackingService', ConversionTrackingService)
+  .service('pushNotificationService', PushNotificationService)
   .service('scrollingService', ScrollingService)
+  .service('userTrackingService', UserTrackingService)
 
   .config([
     '$stateProvider',
@@ -64,24 +83,6 @@ angular.module(MODULE_NAME, ['ui.router', 'ngMaterial'])
   ])
 
   .run([
-    '$window',
-    '$rootScope',
-    '$location',
-    (
-      $window: ng.IWindowService ,
-      $rootScope: ng.IRootScopeService,
-      $location: ng.ILocationService
-    ) => {
-      // facebook pixel
-      fbq('init', '140968403058884');
-
-      // google analytics
-      ga('create', 'UA-90383943-1', 'auto');
-
-      $rootScope.$on('$stateChangeSuccess', event => {
-        console.log('$on $stateChangeSuccess');
-        ga('send', 'pageview', $location.path());
-        fbq('track', 'PageView');
-      });
-    }
+    'userTrackingService',
+    (userTrackingService: UserTrackingService) => userTrackingService.initialize()
   ]);

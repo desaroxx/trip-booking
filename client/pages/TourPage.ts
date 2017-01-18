@@ -8,7 +8,7 @@ import { UserTrackingService } from '../services/UserTrackingService';
 
 class TourPageController {
 
-  public static $inject = ['scrollingService'];
+  public static $inject = ['scrollingService', 'conversionTrackingService', 'userTrackingService'];
 
   // own
   public pageName: string;
@@ -18,7 +18,11 @@ class TourPageController {
   // bindings
   public data: ITourPageData;
 
-  constructor(private scrollingService: ScrollingService) {
+  constructor(
+    private scrollingService: ScrollingService,
+    private conversionTrackingService: ConversionTrackingService,
+    private userTrackingService: UserTrackingService
+  ) {
     // own
     this.pageName = 'Tour';
     this.tabNames = ['Tour', 'Bikes', 'Bilder'];
@@ -29,14 +33,14 @@ class TourPageController {
   }
 
   public onPriceAndDatesButtonClick(tabName: string) {
-    UserTrackingService.clickViewPricesAndDatesButton(this.pageName, tabName);
+    this.userTrackingService.clickViewPricesAndDatesButton(this.pageName, tabName);
     const elementId = 'configure-offer';
     this.scrollingService.scrollTo(elementId);
   }
 
   public onOrderNowButtonClick() {
     const selectedTabName = this.tabNames[this.selectedTabIndex];
-    ConversionTrackingService.clickOrderNowButton(this.pageName, selectedTabName);
+    this.conversionTrackingService.clickOrderNowButton(this.pageName, selectedTabName);
   }
 
 }

@@ -2,10 +2,14 @@ import { ConversionTrackingService } from '../../services/ConversionTrackingServ
 
 class SubscribeNewsletterCardController {
 
+  public static $inject = ['conversionTrackingService'];
+
+  constructor(private conversionTrackingService: ConversionTrackingService) {}
+
   public pageName: string;
 
   public onSubscribeButtonClick(isValid: boolean) {
-    ConversionTrackingService.subscribeNewsletter(this.pageName);
+    this.conversionTrackingService.subscribeNewsletter(this.pageName);
   }
 
 }

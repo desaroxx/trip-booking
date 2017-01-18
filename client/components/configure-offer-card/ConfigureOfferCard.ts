@@ -3,6 +3,9 @@ import { ITourDate } from './ITourDate';
 
 class ConfigureOfferCardController {
 
+  public static $inject = ['$scope', 'conversionTrackingService'];
+
+
   // internal
   public persons: number;
   public bikes: number;
@@ -19,7 +22,7 @@ class ConfigureOfferCardController {
   public pricePerPerson: number;
   public tourDates: ITourDate[];
 
-  constructor(private $scope: ng.IScope) {
+  constructor(private $scope: ng.IScope, private conversionTrackingService: ConversionTrackingService) {
     this.persons = 1;
     this.bikes = 1;
     this.rooms = 1;
@@ -39,7 +42,7 @@ class ConfigureOfferCardController {
   }
 
   public onFormFirstTouched() {
-    ConversionTrackingService.touchedOfferConfigurator(this.pageName);
+    this.conversionTrackingService.touchedOfferConfigurator(this.pageName);
   }
 
 }
